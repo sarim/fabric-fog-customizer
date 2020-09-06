@@ -1,37 +1,33 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "fog-customizer",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Fog Customizer",
+  "description": "Customize the fog rendering in you game",
   "authors": [
-    "Me!"
+    "Sarim Khan"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/sairm/fabric-fog-customizer"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "MIT",
+  "icon": "assets/fog-customizer/icon.png",
 
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "main": [
       "net.fabricmc.example.ExampleMod"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "fog-customizer.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
     "minecraft": "1.16.x"
-  },
-  "suggests": {
-    "flamingo": "*"
   }
 }
