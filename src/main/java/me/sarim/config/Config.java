@@ -10,19 +10,19 @@ import fi.dy.masa.malilib.config.ConfigUtils;
 import fi.dy.masa.malilib.config.IConfigBase;
 import fi.dy.masa.malilib.config.IConfigHandler;
 import fi.dy.masa.malilib.config.IConfigOptionListEntry;
-import fi.dy.masa.malilib.config.options.ConfigDouble;
 import fi.dy.masa.malilib.config.options.ConfigOptionList;
 import fi.dy.masa.malilib.util.FileUtils;
 import fi.dy.masa.malilib.util.JsonUtils;
 import me.sarim.FogCustomizer;
+import me.sarim.config.malilib.ConfigFloat;
 
 public class Config implements IConfigHandler {
 
 	public static class Generic
     {
-        public static final ConfigDouble linearFogMultiplier = new ConfigDouble("linearFogMultiplier", 0.75F, 0, 1, true, "");
-        public static final ConfigDouble expFogMultiplier    = new ConfigDouble("expFogMultiplier", 3.00F, 0, 10, true, "");
-		public static final ConfigDouble exp2FogMultiplier   = new ConfigDouble("exp2FogMultiplier", 1.75F, 0, 10, true, "");
+        public static final ConfigFloat linearFogMultiplier = new ConfigFloat("linearFogMultiplier", 0.75F, 0, 1, true, "");
+        public static final ConfigFloat expFogMultiplier    = new ConfigFloat("expFogMultiplier", 3.00F, 0, 10, true, "");
+		public static final ConfigFloat exp2FogMultiplier   = new ConfigFloat("exp2FogMultiplier", 1.75F, 0, 10, true, "");
 		public static final ConfigOptionList fogType         = new ConfigOptionList("fogType", FogType.LINEAR, "");
 
         public static final ImmutableList<IConfigBase> OPTIONS = ImmutableList.of(

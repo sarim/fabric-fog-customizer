@@ -25,14 +25,14 @@ public abstract class RendererMixin {
 	@Inject(method = "applyFog", at=@At(value = "INVOKE", target = "com/mojang/blaze3d/systems/RenderSystem.setupNvFogDistance()V"), locals = LocalCapture.CAPTURE_FAILSOFT)
 	private static void applyCustomFog(Camera camera, BackgroundRenderer.FogType fogType, float viewDistance, boolean thickFog, CallbackInfo ci, FluidState fluidState, Entity entity, float u) {
 		if (! (fluidState.isIn(FluidTags.LAVA)) || (entity instanceof LivingEntity && ((LivingEntity)entity).hasStatusEffect(StatusEffects.BLINDNESS))) {
-			RenderSystem.fogStart(viewDistance * (float)Config.Generic.linearFogMultiplier.getDoubleValue());
+			RenderSystem.fogStart(viewDistance * Config.Generic.linearFogMultiplier.getFloatValue());
 			if (Config.Generic.fogType.getOptionListValue().equals(Config.FogType.LINEAR))
 				RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
 			else if (Config.Generic.fogType.getOptionListValue().equals(Config.FogType.EXPONENTIAL)) {
-				RenderSystem.fogDensity((float)Config.Generic.expFogMultiplier.getDoubleValue() / viewDistance);
+				RenderSystem.fogDensity(Config.Generic.expFogMultiplier.getFloatValue() / viewDistance);
 				RenderSystem.fogMode(GlStateManager.FogMode.EXP);
 			} else if (Config.Generic.fogType.getOptionListValue().equals(Config.FogType.EXPONENTIAL_TWO)) {
-				RenderSystem.fogDensity((float)Config.Generic.exp2FogMultiplier.getDoubleValue() / viewDistance);
+				RenderSystem.fogDensity(Config.Generic.exp2FogMultiplier.getFloatValue() / viewDistance);
 				RenderSystem.fogMode(GlStateManager.FogMode.EXP2);
 			}
 		}
