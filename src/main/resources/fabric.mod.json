@@ -17,8 +17,11 @@
 
   "environment": "client",
   "entrypoints": {
-    "main": [
-      "net.fabricmc.example.ExampleMod"
+    "client": [
+      "me.sarim.FogCustomizer"
+    ],
+    "modmenu": [
+      "me.sarim.config.ModMenuProvider"
     ]
   },
   "mixins": [
