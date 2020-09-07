@@ -20,18 +20,37 @@ public class Config implements IConfigHandler {
 
 	public static class Generic
     {
-        public static final ConfigFloat linearFogMultiplier = new ConfigFloat("linearFogMultiplier", 0.75F, 0, 1, true, "");
-        public static final ConfigFloat expFogMultiplier    = new ConfigFloat("expFogMultiplier", 3.00F, 0, 10, true, "");
-		public static final ConfigFloat exp2FogMultiplier   = new ConfigFloat("exp2FogMultiplier", 1.75F, 0, 10, true, "");
-		public static final ConfigOptionList fogType         = new ConfigOptionList("fogType", FogType.LINEAR, "");
+        public static final ConfigFloat fogStartMultiplier = new ConfigFloat("Linear Fog Start Multiplier", 0.75F, 0, 1, true, "");
+        public static final ConfigFloat fogEndMultiplier   = new ConfigFloat("Linear Fog End Multiplier", 1.0F, 0, 2, true, "");
+        public static final ConfigFloat expFogMultiplier   = new ConfigFloat("Exp Fog Density Multiplier", 3.00F, 0, 10, true, "");
+		public static final ConfigFloat exp2FogMultiplier  = new ConfigFloat("Exp2 Fog Density Multiplier", 1.75F, 0, 10, true, "");
+		public static final ConfigOptionList fogType       = new ConfigOptionList("Fog Type", FogType.LINEAR, "");
 
         public static final ImmutableList<IConfigBase> OPTIONS = ImmutableList.of(
-			linearFogMultiplier,
+			fogType,
+			fogStartMultiplier,
+			fogEndMultiplier,
 			expFogMultiplier,
-			exp2FogMultiplier,
-			fogType
+			exp2FogMultiplier			
         );
-    }
+	}
+	
+	public static class Thick
+    {
+        public static final ConfigFloat fogStartMultiplier = new ConfigFloat("Linear Fog Start Multiplier", 0.05F, 0, 1, true, "");
+        public static final ConfigFloat fogEndMultiplier   = new ConfigFloat("Linear Fog End Multiplier", 0.5F, 0, 2, true, "");
+        public static final ConfigFloat expFogMultiplier   = new ConfigFloat("Exp Fog Density Multiplier", 3.00F, 0, 10, true, "");
+		public static final ConfigFloat exp2FogMultiplier  = new ConfigFloat("Exp2 Fog Density Multiplier", 1.75F, 0, 10, true, "");
+		public static final ConfigOptionList fogType       = new ConfigOptionList("Fog Type", FogType.LINEAR, "");
+
+        public static final ImmutableList<IConfigBase> OPTIONS = ImmutableList.of(
+			fogType,
+			fogStartMultiplier,
+			fogEndMultiplier,
+			expFogMultiplier,
+			exp2FogMultiplier			
+        );
+	}
 
 	public enum FogType implements IConfigOptionListEntry {
 		LINEAR           ("LINEAR"),
@@ -113,6 +132,7 @@ public class Config implements IConfigHandler {
                 JsonObject root = element.getAsJsonObject();
 
                 ConfigUtils.readConfigBase(root, "Generic", Generic.OPTIONS);
+                ConfigUtils.readConfigBase(root, "Thick", Thick.OPTIONS);
                 // ConfigUtils.readConfigBase(root, "Hotkeys", Hotkeys.HOTKEY_LIST);
             }
         }
@@ -127,6 +147,7 @@ public class Config implements IConfigHandler {
             JsonObject root = new JsonObject();
 
             ConfigUtils.writeConfigBase(root, "Generic", Generic.OPTIONS);
+            ConfigUtils.writeConfigBase(root, "Thick", Thick.OPTIONS);
             // ConfigUtils.writeConfigBase(root, "Hotkeys", Hotkeys.HOTKEY_LIST);
 
             JsonUtils.writeJsonToFile(root, new File(dir, FogCustomizer.MOD_CONF));

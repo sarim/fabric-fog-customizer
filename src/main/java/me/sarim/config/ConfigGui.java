@@ -8,13 +8,14 @@ import fi.dy.masa.malilib.gui.GuiConfigsBase;
 import fi.dy.masa.malilib.gui.button.ButtonBase;
 import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import fi.dy.masa.malilib.gui.button.IButtonActionListener;
+import fi.dy.masa.malilib.render.RenderUtils;
 import me.sarim.FogCustomizer;
 
 public class ConfigGui extends GuiConfigsBase {
     private static ConfigGuiTab tab = ConfigGuiTab.GENERIC;
 
     public ConfigGui() {
-        super(10, 50, FogCustomizer.MOD_CONF, null, "Custom Fog Config");
+        super(10, 50, FogCustomizer.MOD_CONF, null, "Fog Customizer");
     }
 
     @Override
@@ -50,6 +51,8 @@ public class ConfigGui extends GuiConfigsBase {
 
         if (tab == ConfigGuiTab.GENERIC) {
             configs = Config.Generic.OPTIONS;
+        } else if (tab == ConfigGuiTab.THICK) {
+            configs = Config.Thick.OPTIONS;
         }
         // else if (tab == CustomFogConfig.HOTKEYS)
         // {
@@ -83,7 +86,8 @@ public class ConfigGui extends GuiConfigsBase {
 
     public enum ConfigGuiTab
     {
-        GENERIC ("generic");
+        GENERIC ("generic"),
+        THICK ("thick");
         // HOTKEYS ("hotkeys");
 
         private final String displayName;
@@ -97,5 +101,12 @@ public class ConfigGui extends GuiConfigsBase {
         {
             return displayName;
         }
+    }
+
+    @Override
+    protected void drawScreenBackground(int mouseX, int mouseY)
+    {
+        // Draw the dark background
+        RenderUtils.drawRect(0, 0, this.width, this.height, 0x00000000);
     }
 }
