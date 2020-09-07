@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Fog Customizer",
-  "description": "Customize the fog rendering in you game",
+  "description": "Customize the fog rendering in your game",
   "authors": [
     "Sarim Khan"
   ],
