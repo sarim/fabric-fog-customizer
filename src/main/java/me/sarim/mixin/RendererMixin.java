@@ -25,36 +25,28 @@ public abstract class RendererMixin {
 		if ((fluidState.isIn(FluidTags.LAVA)) || (entity instanceof LivingEntity && ((LivingEntity)entity).hasStatusEffect(StatusEffects.BLINDNESS))) return;
 
 		if (thickFog) {
-			switch(Config.Thick.fogType.getOptionListValue()) {
-				case Config.FogType.LINEAR:
-					RenderSystem.fogStart(viewDistance * Config.Thick.fogStartMultiplier.getFloatValue());
-					RenderSystem.fogEnd(viewDistance * Config.Thick.fogEndMultiplier.getFloatValue());
-					RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
-					break;
-				case Config.FogType.EXPONENTIAL:
-					RenderSystem.fogDensity(Config.Thick.expFogMultiplier.getFloatValue() / viewDistance);
-					RenderSystem.fogMode(GlStateManager.FogMode.EXP);
-					break;
-				case Config.FogType.EXPONENTIAL_TWO:
-					RenderSystem.fogDensity(Config.Thick.exp2FogMultiplier.getFloatValue() / viewDistance);
-					RenderSystem.fogMode(GlStateManager.FogMode.EXP2);
-					break;
+			if (Config.Thick.fogType.getOptionListValue().equals(Config.FogType.LINEAR)) {
+				RenderSystem.fogStart(viewDistance * Config.Thick.fogStartMultiplier.getFloatValue());
+				RenderSystem.fogEnd(viewDistance * Config.Thick.fogEndMultiplier.getFloatValue());
+				RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
+			} else if (Config.Thick.fogType.getOptionListValue().equals(Config.FogType.EXPONENTIAL)) {
+				RenderSystem.fogDensity(Config.Thick.expFogMultiplier.getFloatValue() / viewDistance);
+				RenderSystem.fogMode(GlStateManager.FogMode.EXP);
+			} else if (Config.Thick.fogType.getOptionListValue().equals(Config.FogType.EXPONENTIAL_TWO)) {
+				RenderSystem.fogDensity(Config.Thick.exp2FogMultiplier.getFloatValue() / viewDistance);
+				RenderSystem.fogMode(GlStateManager.FogMode.EXP2);
 			}
 		} else {
-			switch(Config.Generic.fogType.getOptionListValue()) {
-				case Config.FogType.LINEAR:
-					RenderSystem.fogStart(viewDistance * Config.Generic.fogStartMultiplier.getFloatValue());
-					RenderSystem.fogEnd(viewDistance * Config.Generic.fogEndMultiplier.getFloatValue());
-					RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
-					break;
-				case Config.FogType.EXPONENTIAL:
-					RenderSystem.fogDensity(Config.Generic.expFogMultiplier.getFloatValue() / viewDistance);
-					RenderSystem.fogMode(GlStateManager.FogMode.EXP);
-					break;
-				case Config.FogType.EXPONENTIAL_TWO:
-					RenderSystem.fogDensity(Config.Generic.exp2FogMultiplier.getFloatValue() / viewDistance);
-					RenderSystem.fogMode(GlStateManager.FogMode.EXP2);
-					break;
+			if (Config.Generic.fogType.getOptionListValue().equals(Config.FogType.LINEAR)) {
+				RenderSystem.fogStart(viewDistance * Config.Generic.fogStartMultiplier.getFloatValue());
+				RenderSystem.fogEnd(viewDistance * Config.Generic.fogEndMultiplier.getFloatValue());
+				RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
+			} else if (Config.Generic.fogType.getOptionListValue().equals(Config.FogType.EXPONENTIAL)) {
+				RenderSystem.fogDensity(Config.Generic.expFogMultiplier.getFloatValue() / viewDistance);
+				RenderSystem.fogMode(GlStateManager.FogMode.EXP);
+			} else if (Config.Generic.fogType.getOptionListValue().equals(Config.FogType.EXPONENTIAL_TWO)) {
+				RenderSystem.fogDensity(Config.Generic.exp2FogMultiplier.getFloatValue() / viewDistance);
+				RenderSystem.fogMode(GlStateManager.FogMode.EXP2);
 			}
 		}
 		
