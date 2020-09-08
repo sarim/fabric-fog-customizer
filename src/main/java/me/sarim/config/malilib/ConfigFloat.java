@@ -1,6 +1,8 @@
 package me.sarim.config.malilib;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 import fi.dy.masa.malilib.config.options.ConfigDouble;
 
@@ -24,7 +26,7 @@ public class ConfigFloat extends ConfigDouble {
     @Override
     public void setDoubleValue(double value)
     {
-        super.setDoubleValue(Double.valueOf(new DecimalFormat("#.####").format(value)));
+        super.setDoubleValue(Double.valueOf(new DecimalFormat("#.####", DecimalFormatSymbols.getInstance(Locale.US)).format(value)));
     }
 
     public float getFloatValue()
