@@ -2,7 +2,10 @@
 
 ## About
 
-This mod lets you set fog render algorithm: **Linear**/**Exp**/**Exp2**. You can edit **start** and **end** multipler for **linear**, and density multipler for **exp**/**exp2**. You can change fog in two category, `generic` (ex: overworld) and `thick` (ex: nether, end). You can open the configuration screen from modmenu mod list -> config button.
+This mod lets you set fog render algorithm: **Linear**/**Exp**/**Exp2**. You can edit **start** and **end** multipler for **linear**, and density multipler for **exp**/**exp2**. You can change fog in two category, `generic` (ex: overworld) and `thick` (ex: nether, end). The default values are the vanilla ones. You need to adjust it to your liking. You can open the configuration screen from modmenu mod list -> Configure... button.
+
+![2020-09-08_04 49 21](https://user-images.githubusercontent.com/1235888/92419380-0bdef580-f18f-11ea-9d77-a022e8c0e6aa.png)
+
 
 ## Setup
 
